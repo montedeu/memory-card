@@ -1,0 +1,65 @@
+.pokemon-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 1rem;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+    transition: var(--transition-normal);
+    overflow: hidden;
+}
+
+.pokemon-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.pokemon-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: var(--card-hover-bg);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5),
+        0 0 20px var(--accent-glow);
+}
+
+.pokemon-card:hover::before {
+    opacity: 1;
+}
+
+.pokemon-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.3));
+}
+
+.pokemon-card:hover .pokemon-image {
+    transform: scale(1.15) translateY(-5px);
+    filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.4));
+}
+
+.pokemon-name {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-top: var(--spacing-xs);
+    color: var(--text-primary);
+    z-index: 1;
+}
+
+.pokemon-card p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    z-index: 1;
+}
+
+/* Add a subtle tilt effect or shine later if possible, but for now this is good */
